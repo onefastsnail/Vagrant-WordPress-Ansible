@@ -1,0 +1,23 @@
+---
+- hosts: all
+  user: root
+  sudo: true
+  vars:
+    username: weblords
+    password: $6$lZ0OnFOm1afM4ub$ESJW0ZnmQtAgeAx9zBkGCglDryknqG0HAapcE.PKpTL3Avsf4ln/ZndJjrUnE81qAcpt2e4FlSIyt6fl.zyMf0
+    public_key: ~/.ssh/id_rsa.pub
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo apt-get -y install python-simplejson
+
+    - name: 'install aptitude'
+      raw: sudo apt-get -y install aptitude
+  roles: 
+   - common
+   - ufw
+   - user
+   - nginx
+   - php
+   - mariadb
+   - wp-cli
+   - ssh
