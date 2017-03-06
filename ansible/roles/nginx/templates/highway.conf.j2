@@ -4,10 +4,10 @@ server {
     listen [::]:80;
 
     # Server name to listen for
-    server_name test.vm;
+    #server_name _;
 
     # Path to document root
-    root /sites/test.vm;
+    root /sites/$host;
 
     # File to be used as index
     index index.html index.php;

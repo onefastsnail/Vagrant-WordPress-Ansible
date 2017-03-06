@@ -28,23 +28,23 @@
     force: yes
   when: not git_exists.stat.exists
 
-- name: Symlink default site
-  file: 
-    src: /etc/nginx/sites-available/default
-    dest: /etc/nginx/sites-enabled/default
-    state: link
-  notify: reload nginx
-
-- name: Copy across new virtual host for our test.vm
+- name: Copy across new virtual host for our highway
   template:
-    src=test.vm.conf.j2
-    dest=/etc/nginx/sites-available/test.vm.conf
+    src=highway.conf.j2
+    dest=/etc/nginx/sites-available/highway.conf
 
-- name: Enable new vagrant virtual host for our test.vm
+- name: Enable new vagrant virtual host for our highway
   file:
-    src=/etc/nginx/sites-available/test.vm.conf
-    dest=/etc/nginx/sites-enabled/test.vm.conf
-    state=link    
+    src=/etc/nginx/sites-available/highway.conf
+    dest=/etc/nginx/sites-enabled/highway.conf
+    state=link
+
+- name: Remove default virtual host
+  file:
+    path=/etc/nginx/sites-enabled/default
+    state=absent
+  notify:
+    - restart nginx
 
 - name: Set Nginx user
   lineinfile: 

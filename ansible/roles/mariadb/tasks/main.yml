@@ -19,3 +19,13 @@
     password: test
     priv: 'bikes.*:ALL'
     state: present
+
+- name: Create a new database with name 'mytest'
+  mysql_db:
+    name: mytest
+    state: present
+- mysql_user:
+    name: mytest
+    password: test
+    priv: 'mytest.*:ALL'
+    state: present

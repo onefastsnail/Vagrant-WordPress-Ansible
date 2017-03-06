@@ -15,3 +15,6 @@ For the Ansible playbook magic please check [here](/ansible/README.md).
 1. Within this project root run `vagrant up --provision`
 2. Add `192.168.50.4 test.vm` to your hosts file for the test project
 3. Visit [http://test.vm](http://test.vm)
+
+## Notes
+* This branch allows multiple sites to run side by side using NGINX vars to create a dynamic domain naming convention for document root paths.

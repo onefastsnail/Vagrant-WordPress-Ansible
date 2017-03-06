@@ -5,7 +5,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.box = "ubuntu/xenial64"
 
-  config.vm.synced_folder "sites/test.vm", "/sites/test.vm", type: "nfs",  mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
+  config.vm.synced_folder "sites", "/sites", type: "nfs",  mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
 
   #config.vm.synced_folder ".", "/sites", type: "rsync", rsync__exclude: [".git/", "node_modules/", "data/"], rsync__auto: true
 
